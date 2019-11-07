@@ -9,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
+using MeetingWebAPI.Model;
+using MeetingWebAPI.Data;
+using Microsoft.EntityFrameworkCore;
 namespace MeetingWebAPI
 {
     public class Startup
@@ -25,6 +27,9 @@ namespace MeetingWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<MeetingDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("meetingCS")));
+            services.AddScoped<IRepository<Users>, GenericRepository<Users>>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

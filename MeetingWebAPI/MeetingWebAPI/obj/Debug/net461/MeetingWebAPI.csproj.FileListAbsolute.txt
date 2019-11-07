@@ -318,3 +318,6 @@ D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.E
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Remotion.Linq.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\System.Interactive.Async.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.EntityFrameworkCore.Relational.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\System.Data.SqlClient.dll

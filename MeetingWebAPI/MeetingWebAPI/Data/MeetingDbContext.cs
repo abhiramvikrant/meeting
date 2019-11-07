@@ -9,11 +9,16 @@ namespace MeetingWebAPI.Data
 {
     public class MeetingDbContext : DbContext
     {
+        public MeetingDbContext()
+        {
+
+        }
         public DbSet<Users> Users { get; set; }
         public DbSet<meetings> Meetings  { get; set; }
 
         public DbSet<Attendees> Attendees { get; set; }
         public DbSet<MeetingAttendees>  MeetingAttendees { get; set; }
+        public MeetingDbContext(DbContextOptions options) : base(options) { }
 
 
 
