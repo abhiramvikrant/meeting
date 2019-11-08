@@ -18,9 +18,11 @@ namespace MeetingWebAPI.Data
             this.db = _db;
        
         }
-        public void Delete(int meetingid)
+        public async void Delete(int meetingid)
+           
         {
-            var m = db.Meetings.Find(meetingid);
+
+            var m = await db.Meetings.FindAsync(meetingid);
             if( m!= null)
             {
                 db.Meetings.Remove(m);
@@ -33,21 +35,21 @@ namespace MeetingWebAPI.Data
             throw new NotImplementedException();
         }
 
-        public IEnumerable<meetings> GetMeetingByUserID(int userid, string datetime)
+        public  IEnumerable<meetings> GetMeetingByUserID(int userid, string datetime)
         {
-            var lmeetings = db.Meetings.Where(x => x.CreatedBy == userid && x.MeetingDate >= DateTime.Parse(datetime)).ToList<meetings>();
+            var lmeetings =  db.Meetings.Where(x => x.CreatedBy == userid && x.MeetingDate >= DateTime.Parse(datetime)).ToList<meetings>();
             if (lmeetings != null)
                 return lmeetings;
             else
                 return null;
         }
 
-        public void Insert(meetings t)
-        { db.Add(t);
+        public async void Insert(meetings t)
+        { await  db.AddAsync(t);
             db.SaveChanges();
         }
 
-        public void Update(meetings t)
+        public  void Update(meetings t)
         {
             db.Update(t);
             db.SaveChanges();
