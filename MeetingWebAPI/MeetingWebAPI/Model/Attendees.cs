@@ -11,6 +11,8 @@ namespace MeetingWebAPI.Model
         public int AttendeeID { get; set; }
         public string Name { get; set; }
 
-       
+        public int CreatedBy { get; set; }
+
+
     }
 }
