@@ -340,3 +340,4 @@ D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebA
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.csproj.CopyComplete
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.exe
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.pdb
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.csprojAssemblyReference.cache
