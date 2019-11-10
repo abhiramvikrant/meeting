@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using MeetingWebAPI.Data;
 using MeetingWebAPI.Model;
 
@@ -14,17 +20,49 @@ namespace MeetingWebAPI.Controllers
     public class AuthenticateController : ControllerBase
     {
 
-        private IAuthRepository rep = null;
-        public AuthenticateController(IAuthRepository _rep)
+        private readonly  IAuthRepository rep = null;
+        private readonly IConfiguration _config = null;
+        public AuthenticateController(IAuthRepository _rep, IConfiguration config)
         {
             this.rep = _rep;
         }
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] Users udto)
+        public async Task<IActionResult> Login([FromBody]Users udto)
         {
-            var auth = rep.Authenticate(udto.Username, udto.password);
-            return Ok(auth);
+            var user = await rep.Authenticate(udto.Username, udto.password);
+            
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
+                new Claim(ClaimTypes.Name,user.Username)
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings: Token").Value));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            var tokendescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenhandlker = new JwtSecurityTokenHandler();
+            var token = tokenhandlker.CreateToken(tokendescriptor);
+
+            return Ok(
+
+                new
+                {
+                    token = tokenhandlker.WriteToken(token)
+                });
+
+
         }
+
+
 
     }
 }

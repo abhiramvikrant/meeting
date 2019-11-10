@@ -1,24 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http;
+using Microsoft.EntityFrameworkCore;
+using MeetingWebAPI.Model;
 
 namespace MeetingWebAPI.Data
 {
     public class AuthRepository : IAuthRepository
     {
-        private MeetingDbContext db = null;
+        private MeetingDbContext _db = null;
 
-        public AuthRepository(MeetingDbContext _db)
+        public AuthRepository(MeetingDbContext db)
         {
-            this.db = _db;
+            this._db = db;
         }
-        public bool Authenticate(string username, string password)
+        public  async Task<Users> Authenticate(string username, string password)
         {
-            var result = db.Users.Where(x => x.Username == username && x.password == password).FirstOrDefault();
-            if (result != null)
-                return true;
-            return false;
+            var result = await _db.Users.FirstOrDefaultAsync(x => x.Username == username && x.password == password);
+            if (result == null)
+                return null;
+            return result;
 
         }
     }

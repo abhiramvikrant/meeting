@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MeetingWebAPI.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 
 
 namespace MeetingWebAPI.Data
@@ -44,8 +45,10 @@ namespace MeetingWebAPI.Data
                 return null;
         }
 
-        public async void Insert(meetings t)
-        { await  db.AddAsync(t);
+        public async void Insert(  meetings t)
+        {
+          
+                await  db.AddAsync(t);
             db.SaveChanges();
         }
 
