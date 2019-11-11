@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MeetingWebAPI.Model;
 
 namespace MeetingWebAPI.Data
 {
-    public interface IMeetingRepository<T> where T: class
+    public interface IMeetingRepository<T>
     {
-         T GetByID(int meetingid);
+         meetings GetByID(int meetingid);
     IEnumerable<T> GetMeetingByUserID(int userid, string datetime);
     void Delete(    int meetingid);
 
     void Update(T t);
 
-    void Insert(T t);
+    void Insert(T  t);
+        void AddAttendees(int meetingid, int attendeeid);
 }
 }

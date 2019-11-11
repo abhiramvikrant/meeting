@@ -340,7 +340,6 @@ D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebA
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.csproj.CopyComplete
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.exe
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.pdb
-D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.csprojAssemblyReference.cache
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.Logging.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.Tokens.dll
@@ -350,3 +349,6 @@ D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.A
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.AspNetCore.Identity.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.Extensions.Identity.Core.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.Protocols.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

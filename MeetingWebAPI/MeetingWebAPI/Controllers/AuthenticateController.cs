@@ -25,7 +25,8 @@ namespace MeetingWebAPI.Controllers
         public AuthenticateController(IAuthRepository _rep, IConfiguration config)
         {
             this.rep = _rep;
-        }
+            this._config = config;
+                }
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody]Users udto)
         {
@@ -40,7 +41,8 @@ namespace MeetingWebAPI.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.id.ToString()),
                 new Claim(ClaimTypes.Name,user.Username)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings: Token").Value));
+            var secret = Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value);
+            var key = new SymmetricSecurityKey(secret);
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var tokendescriptor = new SecurityTokenDescriptor
             {

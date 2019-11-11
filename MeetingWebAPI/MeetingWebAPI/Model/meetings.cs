@@ -16,7 +16,7 @@ namespace MeetingWebAPI.Model
 
             public int CreatedBy { get; set; }
 
-        public ICollection<MeetingAttendees>MeetingAttendeesLink { get; set; }
+        public ICollection<MeetingAttendees> MeetingAttendeesLink { get; set; }
 
         
     }

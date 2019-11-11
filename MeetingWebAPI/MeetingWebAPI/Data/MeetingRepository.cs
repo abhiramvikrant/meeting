@@ -13,10 +13,10 @@ namespace MeetingWebAPI.Data
     
     {
 
-        private  MeetingDbContext db = null;
-            public MeetingRepository(MeetingDbContext _db)
+        private MeetingDbContext db = null;
+            public MeetingRepository(MeetingDbContext db)
         {
-            this.db = _db;
+            this.db = db;
        
         }
         public async void Delete(int meetingid)
@@ -38,7 +38,8 @@ namespace MeetingWebAPI.Data
 
         public  IEnumerable<meetings> GetMeetingByUserID(int userid, string datetime)
         {
-            var lmeetings =  db.Meetings.Where(x => x.CreatedBy == userid && x.MeetingDate >= DateTime.Parse(datetime)).ToList<meetings>();
+            var lmeetings =  db.Meetings.Where(x => x.CreatedBy == userid && x.MeetingDate >= DateTime.Parse(datetime))
+                .Include(x =>x.MeetingAttendeesLink).ToList<meetings>();
             if (lmeetings != null)
                 return lmeetings;
             else
@@ -49,6 +50,14 @@ namespace MeetingWebAPI.Data
         {
           
                 await  db.AddAsync(t);
+            db.SaveChanges();
+        }
+
+        public void AddAttendees(int meetingid, int attendeeid)
+        {
+            var meet = db.Meetings.Include(x => x.MeetingAttendeesLink).First();
+            MeetingAttendees ma = new MeetingAttendees {MeetingID=meetingid, AttendeeID = attendeeid };
+            meet.MeetingAttendeesLink.Add(ma);
             db.SaveChanges();
         }
 
