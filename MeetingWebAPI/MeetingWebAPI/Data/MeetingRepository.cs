@@ -19,14 +19,15 @@ namespace MeetingWebAPI.Data
             this.db = db;
        
         }
-        public async void Delete(int meetingid)
+        public  void Delete(int meetingid)
            
         {
 
-            var m = await db.Meetings.Where(x => x.MeetingId == meetingid).FirstOrDefaultAsync();
+            var m =  db.Meetings.Where(x => x.MeetingId == meetingid).First();
             if( m!= null)
             {
                 db.Meetings.Remove(m);
+                db.SaveChanges();
            
             }
         }
