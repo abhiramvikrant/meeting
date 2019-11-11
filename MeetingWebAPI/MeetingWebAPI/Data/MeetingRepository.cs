@@ -23,11 +23,11 @@ namespace MeetingWebAPI.Data
            
         {
 
-            var m = await db.Meetings.FindAsync(meetingid);
+            var m = await db.Meetings.Where(x => x.MeetingId == meetingid).FirstOrDefaultAsync();
             if( m!= null)
             {
                 db.Meetings.Remove(m);
-                db.SaveChanges();
+           
             }
         }
 
@@ -63,7 +63,12 @@ namespace MeetingWebAPI.Data
 
         public  void Update(meetings t)
         {
-            db.Update(t);
+            var meet = db.Meetings.Where(x => x.MeetingId == t.MeetingId).FirstOrDefault();
+            meet.Name = t.Name;
+            meet.Agenda = t.Agenda;
+            meet.MeetingDate = t.MeetingDate;
+            meet.StartTime = t.StartTime;
+            db.Meetings.Update(meet);
             db.SaveChanges();
         }
     }

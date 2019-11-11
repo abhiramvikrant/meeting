@@ -26,12 +26,26 @@ namespace MeetingWebAPI.Controllers
 
         }
 
-        [HttpPatch("addmeeting")]
+        [HttpPost("addmeeting")]
         public ActionResult Insert([FromBody] meetings m)
         {
             rep.Insert(m);
             return Ok();
 
+        }
+        [HttpPut("Updatemeeting")]
+        public ActionResult Update([FromBody] meetings m)
+        {
+            rep.Update(m);
+            return Ok();
+        }
+
+
+        [HttpDelete("DeleteMeeting/{meetingid}")]
+        public ActionResult Delete(int meetingid)
+        {
+            rep.Delete(meetingid);
+            return Ok();
         }
     }
 }

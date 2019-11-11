@@ -352,3 +352,4 @@ D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.E
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.Protocols.dll
 D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\bin\Debug\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\projects\Informatics\MeetingWebAPI\MeetingWebAPI\obj\Debug\net461\MeetingWebAPI.csprojAssemblyReference.cache
