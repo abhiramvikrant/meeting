@@ -35,6 +35,7 @@ namespace MeetingWebAPI
             services.AddScoped<IRepository<Users>, GenericRepository<Users>>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMeetingRepository<meetings>, MeetingRepository>();
+            services.AddScoped<IAttendeeRepository<Attendees>, AttendeeRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
                 AddJwtBearer(options =>
                 {

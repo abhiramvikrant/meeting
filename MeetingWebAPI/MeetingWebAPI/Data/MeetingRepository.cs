@@ -34,7 +34,12 @@ namespace MeetingWebAPI.Data
 
         public meetings GetByID(int meetingid)
         {
-            throw new NotImplementedException();
+            var meetings = db.Meetings.Where(x => x.MeetingId == meetingid).Include(l => l.MeetingAttendeesLink).FirstOrDefault();
+            if (meetings != null)
+                return meetings;
+            else
+                return null;
+
         }
 
         public  IEnumerable<meetings> GetMeetingByUserID(int userid, string datetime)

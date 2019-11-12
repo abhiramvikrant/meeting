@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MeetingWebAPI.Data;
 using MeetingWebAPI.Model;
+using Newtonsoft.Json;
 
 namespace MeetingWebAPI.Controllers
 {
@@ -46,6 +47,15 @@ namespace MeetingWebAPI.Controllers
         {
             rep.Delete(meetingid);
             return Ok();
+        }
+        [HttpGet("GetMeeting/{meetingid}")]
+
+        public ActionResult GetMeetingByID( int meetingid)
+        {
+            var meeting = rep.GetByID(meetingid);
+            return Ok(JsonConvert.SerializeObject(meeting));
+            
+
         }
     }
 }
