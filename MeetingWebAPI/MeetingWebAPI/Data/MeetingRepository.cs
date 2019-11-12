@@ -13,7 +13,7 @@ namespace MeetingWebAPI.Data
     
     {
 
-        private MeetingDbContext db = null;
+        private readonly MeetingDbContext db = null;
             public MeetingRepository(MeetingDbContext db)
         {
             this.db = db;

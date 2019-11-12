@@ -11,7 +11,7 @@ namespace MeetingWebAPI.Data
         private readonly MeetingDbContext db = null;
         public AttendeeRepository()
         {
-
+           
         }
         public AttendeeRepository(MeetingDbContext db)
         {
