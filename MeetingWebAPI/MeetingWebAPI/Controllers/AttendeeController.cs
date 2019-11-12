@@ -35,6 +35,7 @@ namespace MeetingWebAPI.Controllers
             return Ok();
         }
 
+        [HttpGet("GetAttendee/{createdby}")]
         public ActionResult GetAttendee(int createdby)
         {
             var l = rep.GetAttendees(createdby);
