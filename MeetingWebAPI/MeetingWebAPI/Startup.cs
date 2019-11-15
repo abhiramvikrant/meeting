@@ -36,6 +36,7 @@ namespace MeetingWebAPI
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMeetingRepository<meetings>, MeetingRepository>();
             services.AddScoped<IAttendeeRepository<Attendees>, AttendeeRepository>();
+            services.AddCors();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
                 AddJwtBearer(options =>
                 {
@@ -62,6 +63,7 @@ namespace MeetingWebAPI
             }
 
             app.UseAuthentication();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }
     }

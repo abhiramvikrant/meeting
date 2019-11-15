@@ -54,7 +54,7 @@ namespace MeetingWebAPI.Data
 
         public async void Insert(  meetings t)
         {
-          
+            
                 await  db.AddAsync(t);
             db.SaveChanges();
         }
