@@ -27,8 +27,9 @@ return this.http.post(this.url, data, httpOption).pipe(
   if (user) {
   localStorage.setItem('token', user.token);
   localStorage.setItem('user', JSON.stringify(user.user));
-  localStorage.setItem('id', JSON.stringify(user.id));
   this.decodedtoken = this.jwtHelper.decodeToken(user.token);
+
+  console.log(this.decodedtoken.nameid);
 }
   }
 )); }

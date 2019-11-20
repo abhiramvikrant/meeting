@@ -24,23 +24,46 @@ namespace MeetingWebAPI.Controllers
         [HttpPost("add")]
         public ActionResult  Add([FromBody] Attendees a)
         {
-            rep.Insert(a);
-          return    Ok();
+            try
+            {
+                rep.Insert(a);
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         [HttpDelete("delete/{attendeeid}")]
         public ActionResult Delete(int attendeeid)
         {
-            rep.Delete(attendeeid);
-            return Ok();
+            try
+            {
+                rep.Delete(attendeeid);
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public ActionResult GetAttendee(int createdby)
         {
-            var l = rep.GetAttendees(createdby);
-            return Ok(JsonConvert.SerializeObject(l));
-        }
+            try
+            {
+                var l = rep.GetAttendees(createdby);
+                return Ok(JsonConvert.SerializeObject(l));
+            }
+            catch (Exception)
+            {
 
-       
-    }
+                throw;
+            }
+          
 }

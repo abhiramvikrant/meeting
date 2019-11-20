@@ -8,12 +8,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { MeetingComponent } from './meeting/meeting.component';
+import { MeetinglistComponent } from './meetinglist/meetinglist.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       NavbarComponent,
-      MeetingComponent
+      MeetingComponent,
+      MeetinglistComponent
    ],
    imports: [
       BrowserModule,

@@ -42,9 +42,9 @@ namespace MeetingWebAPI.Data
 
         }
 
-        public  IEnumerable<meetings> GetMeetingByUserID(int userid, string datetime)
+       public  IEnumerable<meetings> GetMeetingByUserID(int userid)
         {
-            var lmeetings =  db.Meetings.Where(x => x.CreatedBy == userid && x.MeetingDate >= DateTime.Parse(datetime))
+            var lmeetings =  db.Meetings.Where(x => x.CreatedBy == userid)
                 .Include(x =>x.MeetingAttendeesLink).ToList<meetings>();
             if (lmeetings != null)
                 return lmeetings;
@@ -69,13 +69,22 @@ namespace MeetingWebAPI.Data
 
         public  void Update(meetings t)
         {
-            var meet = db.Meetings.Where(x => x.MeetingId == t.MeetingId).FirstOrDefault();
-            meet.Name = t.Name;
-            meet.Agenda = t.Agenda;
-            meet.MeetingDate = t.MeetingDate;
-            meet.StartTime = t.StartTime;
-            db.Meetings.Update(meet);
-            db.SaveChanges();
+            try
+            {
+                var meet = db.Meetings.Where(x => x.MeetingId == t.MeetingId).FirstOrDefault();
+                meet.Name = t.Name;
+                meet.Agenda = t.Agenda;
+                meet.MeetingDate = t.MeetingDate;
+                meet.StartTime = t.StartTime;
+                db.Meetings.Update(meet);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+       
         }
     }
 }

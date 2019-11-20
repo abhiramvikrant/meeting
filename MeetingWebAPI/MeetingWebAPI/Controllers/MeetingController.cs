@@ -13,8 +13,8 @@ namespace MeetingWebAPI.Controllers
     [ApiController]
     public class MeetingController : ControllerBase
     {
-       
-        private readonly IMeetingRepository<meetings>    rep = null;
+
+        private readonly IMeetingRepository<meetings> rep = null;
         public MeetingController(IMeetingRepository<meetings> rep)
         {
             this.rep = rep;
@@ -22,7 +22,7 @@ namespace MeetingWebAPI.Controllers
         [HttpPost("addattendee")]
         public ActionResult AddAttendee([FromBody]MeetingAttendees ma)
         {
-     rep.AddAttendees(ma.MeetingID, ma.AttendeeID);
+            rep.AddAttendees(ma.MeetingID, ma.AttendeeID);
             return Ok();
 
         }
@@ -34,9 +34,20 @@ namespace MeetingWebAPI.Controllers
             return Ok();
 
         }
-        [HttpPut("Updatemeeting")]
-        public ActionResult Update([FromBody] meetings m)
+        [HttpGet("GetMeetingByUserId/{userid}")]
+        public ActionResult GetMeetingByUserID(int userid)
         {
+            var meetings = rep.GetMeetingByUserID(userid);
+            return Ok(meetings);
+
+        }
+        [HttpPut("Updatemeeting")]
+        public ActionResult Update([FromBody]meetings m)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(m);
+            }
             rep.Update(m);
             return Ok();
         }
@@ -57,5 +68,7 @@ namespace MeetingWebAPI.Controllers
             
 
         }
+
+
     }
 }

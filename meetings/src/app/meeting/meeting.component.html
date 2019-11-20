@@ -2,23 +2,28 @@
   <div class="row">
     <div class="col-sm-8 offset-sm-2">
       <div>
-        <form  #meetingForm="ngForm" (ngSubmit)="addMeeting()">
+        <form  #meetingForm="ngForm" (ngSubmit)="meetingForm.form.valid && addMeeting()" novalidate>
           <div class="form-group">
             <!--name, agenda, meeting date, start time-->
 
             <label for="name">Name</label>
-            <input [(ngModel)]="model.Name" name="name" class="form-control" type="text" required/>
-            <input [(ngModel)]="model.CreatedBy" name="creaetedby" type="hidden" value="{{authService.decodedtoken?.nameid}}" />
+            <input [(ngModel)]="model.Name" name="name" class="form-control" type="text" #name="ngModel" [ngClass]="{ 'is-invalid': meetingForm.submitted && name.invalid }" required/>
+            <div *ngIf="meetingForm.submitted && name.invalid"
+    class="invalid-feedback"><div *ngIf="name?.errors.required">Name is required.</div></div>
+            <input [(ngModel)]="model.CreatedBy" name="creaetedby" type="hidden" value="{{nameid}}" />
             <label for="agenda">Agenda</label>
-            <input [(ngModel)]="model.Agenda" name="agenda" class="form-control" type="text" required/>
+            <input [(ngModel)]="model.Agenda" #agenda="ngModel" name="agenda" class="form-control" type="text" [ngClass]="{ 'is-invalid': meetingForm.submitted && agenda.invalid }" required />
+            <div *ngIf="meetingForm.submitted && agenda.invalid"
+            class="invalid-feedback"><div *ngIf="agenda?.errors.required">Agenda is required.</div></div>
+            <label for="meetingdate">Meeting Date</label>
+            <input [(ngModel)]="model.MeetingDate" #meetingdate = "ngModel" name="meetingdate" class="form-control" type="date"  [ngClass]="{ 'is-invalid': meetingForm.submitted && meetingdate.invalid }" required />
+            <div *ngIf="meetingForm.submitted && meetingdate.invalid"
+            class="invalid-feedback"><div *ngIf="meetingdate?.errors.required">Meeting date is required.</div></div>
 
-            <label for="name">Meeting Date</label>
-            <input [(ngModel)]="model.MeetingDate" name="meetingdate" class="form-control" type="text" required/>
-
-            <label for="name">Start Time</label>
-            <input [(ngModel)]="model.StartTime" name="starttime" class="form-control" type="text" required/>
+            <label for="starttime">Start Time</label>
+            <input [(ngModel)]="model.StartTime" name="starttime" class="form-control" type="text" />
 <br>
-            <button type="submit">Add Meeting</button>
+            <button type="submit" class="btn btn-primary">Add Meeting</button>
           </div>
         </form>
 

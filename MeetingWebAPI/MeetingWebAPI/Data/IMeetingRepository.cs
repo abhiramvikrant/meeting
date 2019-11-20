@@ -9,7 +9,7 @@ namespace MeetingWebAPI.Data
     public interface IMeetingRepository<T>
     {
          meetings GetByID(int meetingid);
-    IEnumerable<T> GetMeetingByUserID(int userid, string datetime);
+    IEnumerable<T> GetMeetingByUserID(int userid);
     void Delete(    int meetingid);
 
     void Update(T t);
