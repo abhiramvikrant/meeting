@@ -7,7 +7,9 @@
             <!--name, agenda, meeting date, start time-->
 
             <label for="name">Name</label>
-            <input [(ngModel)]="model.Name" name="name" class="form-control" type="text" #name="ngModel" [ngClass]="{ 'is-invalid': meetingForm.submitted && name.invalid }" required/>
+            <input [(ngModel)]="model.Name" name="name"
+            class="form-control" type="text" #name="ngModel"
+            [ngClass]="{ 'is-invalid': meetingForm.submitted && name.invalid }" required/>
             <div *ngIf="meetingForm.submitted && name.invalid"
     class="invalid-feedback"><div *ngIf="name?.errors.required">Name is required.</div></div>
             <input [(ngModel)]="model.CreatedBy" name="creaetedby" type="hidden" value="{{nameid}}" />
@@ -19,9 +21,25 @@
             <input [(ngModel)]="model.MeetingDate" #meetingdate = "ngModel" name="meetingdate" class="form-control" type="date"  [ngClass]="{ 'is-invalid': meetingForm.submitted && meetingdate.invalid }" required />
             <div *ngIf="meetingForm.submitted && meetingdate.invalid"
             class="invalid-feedback"><div *ngIf="meetingdate?.errors.required">Meeting date is required.</div></div>
-
+<br />
             <label for="starttime">Start Time</label>
-            <input [(ngModel)]="model.StartTime" name="starttime" class="form-control" type="text" />
+            <select [(ngModel)]="selectedHour" name="hr">
+              <option *ngFor="let hs of hours" value={{hs}}>
+                {{hs}}
+              </option>
+            </select>
+            :
+            <select [(ngModel)]="selectedMinute" name="min">
+              <option *ngFor="let ms of minutes" value={{ms}}>
+                {{ms}}
+              </option>
+            </select>
+&nbsp;
+            <select [(ngModel)]="selectedDayType" name="dt">
+              <option *ngFor="let dt of dayTypes" value={{dt}}>
+                {{dt}}
+              </option>
+            </select>
 <br>
             <button type="submit" class="btn btn-primary">Add Meeting</button>
           </div>

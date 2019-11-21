@@ -14,6 +14,12 @@ export class MeetingComponent implements OnInit {
 model: any  = {};
 nameid: any;
 meetingForm: any;
+hours: string[];
+minutes: string[];
+dayTypes: string[];
+selectedHour: string;
+selectedMinute: string;
+selectedDayType; string;
 jwt = new JwtHelperService();
   constructor(private meetser: MeetingService, public authService: AuthService) { }
 
@@ -21,11 +27,19 @@ jwt = new JwtHelperService();
     const token = localStorage.getItem('token');
     this.nameid = this.jwt.decodeToken(token).nameid;
     this.model.CreatedBy = this.nameid;
+    this.populateData();
    }
 
   addMeeting() {
+    this.model.StartTime = this.selectedHour + ':' + this.selectedMinute + ' ' + this.selectedDayType;
+    console.log(this.model.StartTime);
     this.meetser.addmeeting(this.model).subscribe(next => { },
   error => {console.log('meeting insertion failed'); });
-  this.meetingForm.reset();
+  }
+
+  populateData(){
+    this.hours = ['00', '1', '2', '3', '4' , '5', '6', '7', '8', '9', '10', '11', '12'];
+    this.minutes = ['00', '15', '30', '45'];
+    this.dayTypes = ['AM', 'PM']
   }
 }

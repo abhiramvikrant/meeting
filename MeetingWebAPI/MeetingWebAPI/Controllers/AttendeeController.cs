@@ -22,7 +22,7 @@ namespace MeetingWebAPI.Controllers
 
 
         [HttpPost("add")]
-        public ActionResult  Add([FromBody] Attendees a)
+        public ActionResult Add([FromBody] Attendees a)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace MeetingWebAPI.Controllers
 
                 throw;
             }
-           
+
         }
 
         [HttpDelete("delete/{attendeeid}")]
@@ -50,9 +50,10 @@ namespace MeetingWebAPI.Controllers
 
                 throw;
             }
-            
+
         }
 
+        [HttpGet("GetAttendeeByUserID/{createdby}")]
         public ActionResult GetAttendee(int createdby)
         {
             try
@@ -65,5 +66,7 @@ namespace MeetingWebAPI.Controllers
 
                 throw;
             }
-          
+        }
+
+    }
 }

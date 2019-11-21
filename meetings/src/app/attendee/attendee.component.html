@@ -1,0 +1,40 @@
+
+<div class="container" style="margin-top: 70px;">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+        <div>
+            <form  #attForm="ngForm" (ngSubmit)="attForm.form.valid && onSubmit()" novalidate>
+            <label for="Name">Attendee Name</label>
+            <input [(ngModel)]="model.Name" name="Name" class="form-control" type="text" #Name="ngModel" [ngClass]="{ 'is-invalid': attForm.submitted && Name.invalid }" required/>
+            <div *ngIf="attForm.submitted && Name.invalid"
+    class="invalid-feedback"><div *ngIf="Name?.errors.required"> Attendee Name is required.</div></div>
+    <br/>
+    <input [(ngModel)]="model.CreatedBy" name="creaetedby" type="hidden" value="{{nameid}}" />
+  <button class="btn btn-primary" type="submit">Add Attendee</button>
+  </form>
+            </div>
+            </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-8 offset-sm-2">
+                  <table class="table table-bordered table-striped">
+                      <thead>
+                          <tr class="text-center text-uppercase">
+                              <th>Name</th>
+                              <th>Edit</th>
+                              <th>Delete</th>
+
+                            </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let att of attendeesList | async">
+                          <td>{{att.Name}}</td>
+                          <td><button class="btn btn-information" (click) = "OnEdit(att)"></button></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+            </div>
+</div>

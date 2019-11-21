@@ -16,15 +16,12 @@ export class MeetlinglistService {
   meetingsSL: string[];
 constructor(private http: HttpClient) { }
 updateMeeting(meet: Meetings): Observable<Meetings> {
-  const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   this.baseUrl =  environment.apiUrI + 'Meeting/UpdateMeeting/';
-  return this.http.put<Meetings>(this.baseUrl, meet, httpOptions);
+  return this.http.put<Meetings>(this.baseUrl, meet, httpOption);
 }
 deleteMeetings(meetingid) {
-  const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   this.baseUrl =  environment.apiUrI + 'Meeting/DeleteMeeting/' + meetingid;
-  console.log(this.baseUrl);
-  return this.http.delete(this.baseUrl, httpOptions).subscribe();
+  return this.http.delete(this.baseUrl, httpOption).subscribe();
 }
 
 }

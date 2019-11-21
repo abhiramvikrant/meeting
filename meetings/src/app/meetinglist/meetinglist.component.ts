@@ -40,7 +40,6 @@ baseUrl: string;
 
   deleteMeeting(meetingid) {
     if (confirm('Are you sure you want to delete the meeting?')) {
-      console.log(meetingid);
       this.msl.deleteMeetings(meetingid);
       this.router.navigate(['meetinglist']);
 
