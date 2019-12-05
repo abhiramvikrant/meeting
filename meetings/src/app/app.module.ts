@@ -21,6 +21,7 @@ import {
   MatInputModule, MatTooltipModule, MatToolbarModule
 } from '@angular/material';
 import { AttendeeService } from './_services/attendee.service';
+import { EditmeetingComponent } from './editmeeting/editmeeting.component';
 
 @NgModule({
    declarations: [
@@ -28,33 +29,35 @@ import { AttendeeService } from './_services/attendee.service';
       NavbarComponent,
       MeetingComponent,
       MeetinglistComponent,
-      AttendeeComponent
+      AttendeeComponent,
+      EditmeetingComponent
    ],
    imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatIconModule,
-    MatRadioModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTooltipModule,
-    MatToolbarModule,
-    AppRoutingModule
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      MatButtonModule,
+      MatMenuModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatIconModule,
+      MatRadioModule,
+      MatCardModule,
+      MatSidenavModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatTooltipModule,
+      MatToolbarModule,
+      AppRoutingModule
    ],
    providers: [
       HttpClient,
       AuthService,
       MeetlinglistService,
-      MeetingService, AttendeeService
+      MeetingService,
+      AttendeeService
    ],
    bootstrap: [
       AppComponent

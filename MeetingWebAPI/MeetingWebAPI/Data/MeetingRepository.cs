@@ -34,7 +34,7 @@ namespace MeetingWebAPI.Data
 
         public meetings GetByID(int meetingid)
         {
-            var meetings = db.Meetings.Where(x => x.MeetingId == meetingid).Include(l => l.MeetingAttendeesLink).FirstOrDefault();
+            var meetings = db.Meetings.Where(x => x.MeetingId == meetingid).FirstOrDefault();
             if (meetings != null)
                 return meetings;
             else

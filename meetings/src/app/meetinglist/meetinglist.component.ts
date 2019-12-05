@@ -36,7 +36,9 @@ baseUrl: string;
   }
 
   updateMeeting(meet: Meetings) {
-   return this.msl.updateMeeting(meet); }
+  console.log('Inside edit');
+  console.log(meet);
+  this.msl.updateMeeting(meet); }
 
   deleteMeeting(meetingid) {
     if (confirm('Are you sure you want to delete the meeting?')) {

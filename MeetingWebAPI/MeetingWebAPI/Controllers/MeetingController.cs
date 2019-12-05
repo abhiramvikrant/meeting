@@ -64,7 +64,7 @@ namespace MeetingWebAPI.Controllers
         public ActionResult GetMeetingByID( int meetingid)
         {
             var meeting = rep.GetByID(meetingid);
-            return Ok(JsonConvert.SerializeObject(meeting));
+            return Ok(meeting);
             
 
         }

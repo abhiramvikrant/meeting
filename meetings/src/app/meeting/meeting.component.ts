@@ -32,9 +32,8 @@ jwt = new JwtHelperService();
 
   addMeeting() {
     this.model.StartTime = this.selectedHour + ':' + this.selectedMinute + ' ' + this.selectedDayType;
-    console.log(this.model.StartTime);
     this.meetser.addmeeting(this.model).subscribe(next => { },
-  error => {console.log('meeting insertion failed'); });
+     error => {console.log('meeting insertion failed'); });
   }
 
   populateData(){
