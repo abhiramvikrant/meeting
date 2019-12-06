@@ -17,6 +17,7 @@ export class EditmeetingComponent implements OnInit {
   minutes: string[];
   dayTypes: string[];
   meetingList: MeetingList;
+  model: any  = {};
   shr: any;
   smin: any;
   sdt: any;
@@ -40,8 +41,6 @@ mid: any;
   getMeetingByID(meetingid){
      this.ms.getMeeting(meetingid).subscribe( data => {
       this.meetingList = data;
-      console.log(this.meetingList);
-      console.log(this.meetingList.startTime);
       this.shr = this.meetingList.startTime.substring(0, 1);
       this.smin = this.meetingList.startTime.substring(2, 4);
       this.sdt = this.meetingList.startTime.substring(5, 7);
@@ -51,7 +50,10 @@ mid: any;
 
   }
     onSubmit() {
-    console.log('inside submit');
+      console.log(this.meetingList);
+      this.meetingList.startTime = this.shr + ':' + this.smin + ' ' + this.sdt;
+      this.ms.updateMeeting(this.meetingList).subscribe(next => {}, error => console.log('Update failed'));
+
   }
 
 }

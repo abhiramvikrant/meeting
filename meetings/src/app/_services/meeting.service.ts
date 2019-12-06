@@ -32,8 +32,10 @@ addmeeting(data): Observable<any> {
 
     }
 
-    updateMeeting(m: Meetings){
-      this.editUrl = environment.apiUrI + 'Meeting/Update';
+    updateMeeting(m: Meetings):  Observable<any> {
+    this.editUrl = environment.apiUrI + 'Meeting/Updatemeeting';
+    return this.http.put(this.editUrl, m, httpOption)
+    .pipe(map((response: any) => {console.log('meeting updated'); }));
 
     }
   }
