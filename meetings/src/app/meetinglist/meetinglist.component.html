@@ -1,0 +1,28 @@
+<div class="container py-5">
+
+  <table class="table table-bordered table-striped">
+      <thead>
+          <tr class="text-center text-uppercase">
+              <th>Name</th>
+              <th>Agenda</th>
+              <th>Meeting Date</th>
+              <th>Start Time</th>
+              <th>Edit</th>
+              <th>Delete</th>
+
+            </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let mee of meetingsSL">
+          <td>{{mee.name}}</td>
+          <td>{{mee.agenda}}</td>
+          <td>{{mee.meetingDate | date}}</td>
+          <td>{{mee.startTime}}</td>
+          <td><button class="btn btn-info" (click)="updateMeeting(mee)">Edit</button></td>
+          <td><button class="btn btn-danger" (click)="deleteMeeting(mee.meetingId)">Delete</button></td>
+         </tr>
+      </tbody>
+    </table>
+  </div>
+

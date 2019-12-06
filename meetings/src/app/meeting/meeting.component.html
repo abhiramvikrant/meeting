@@ -1,0 +1,56 @@
+<div class="container" style="margin-top: 70px;">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <div>
+        <form  #meetingForm="ngForm" (ngSubmit)="meetingForm.form.valid && addMeeting()" novalidate>
+          <div class="form-group">
+            <!--name, agenda, meeting date, start time-->
+
+            <label for="name">Name</label>
+            <input [(ngModel)]="model.Name" name="name"
+            class="form-control" type="text" #name="ngModel"
+            [ngClass]="{ 'is-invalid': meetingForm.submitted && name.invalid }" required/>
+            <div *ngIf="meetingForm.submitted && name.invalid"
+    class="invalid-feedback"><div *ngIf="name?.errors.required">Name is required.</div></div>
+            <input [(ngModel)]="model.CreatedBy" name="creaetedby" type="hidden" value="{{nameid}}" />
+            <label for="agenda">Agenda</label>
+            <input [(ngModel)]="model.Agenda" #agenda="ngModel" name="agenda" class="form-control" type="text" [ngClass]="{ 'is-invalid': meetingForm.submitted && agenda.invalid }" required />
+            <div *ngIf="meetingForm.submitted && agenda.invalid"
+            class="invalid-feedback"><div *ngIf="agenda?.errors.required">Agenda is required.</div></div>
+            <label for="meetingdate">Meeting Date</label>
+            <input [(ngModel)]="model.MeetingDate" #meetingdate = "ngModel" name="meetingdate" class="form-control" type="date"  [ngClass]="{ 'is-invalid': meetingForm.submitted && meetingdate.invalid }" required />
+            <div *ngIf="meetingForm.submitted && meetingdate.invalid"
+            class="invalid-feedback"><div *ngIf="meetingdate?.errors.required">Meeting date is required.</div></div>
+<br />
+            <label for="starttime">Start Time</label>
+            <select [(ngModel)]="selectedHour" name="hr">
+              <option *ngFor="let hs of hours" value={{hs}}>
+                {{hs}}
+              </option>
+            </select>
+            :
+            <select [(ngModel)]="selectedMinute" name="min">
+              <option *ngFor="let ms of minutes" value={{ms}}>
+                {{ms}}
+              </option>
+            </select>
+&nbsp;
+            <select [(ngModel)]="selectedDayType" name="dt">
+              <option *ngFor="let dt of dayTypes" value={{dt}}>
+                {{dt}}
+              </option>
+            </select>
+<br>
+            <button type="submit" class="btn btn-primary">Add Meeting</button>
+          </div>
+        </form>
+
+
+
+        </div>
+      <!-- Col sma8 div-->
+      </div>
+    <!-- Row div-->
+  </div>
+  <!-- cotnainer div-->
+</div>
