@@ -22,6 +22,7 @@ import {
 } from '@angular/material';
 import { AttendeeService } from './_services/attendee.service';
 import { EditmeetingComponent } from './editmeeting/editmeeting.component';
+import { TimedataService } from './_services/timedata.service';
 
 @NgModule({
    declarations: [
@@ -57,7 +58,8 @@ import { EditmeetingComponent } from './editmeeting/editmeeting.component';
       AuthService,
       MeetlinglistService,
       MeetingService,
-      AttendeeService
+      AttendeeService,
+      TimedataService
    ],
    bootstrap: [
       AppComponent

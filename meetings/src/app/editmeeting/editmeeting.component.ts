@@ -5,6 +5,7 @@ import { MeetingService } from '../_services/meeting.service';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { MeetingList } from '../_models/MeetingList';
+import { TimedataService } from '../_services/timedata.service';
 
 @Component({
   selector: 'app-editmeeting',
@@ -23,7 +24,7 @@ export class EditmeetingComponent implements OnInit {
   sdt: any;
   sdate: any;
 
-  constructor( private router: Router, private ms: MeetingService) { }
+  constructor( private router: Router, private ms: MeetingService, private timedata: TimedataService) { }
 mid: any;
   ngOnInit() {
     this.populateData();
@@ -32,11 +33,13 @@ mid: any;
 
 
     }
-  populateData(){
-    this.hours = ['00', '1', '2', '3', '4' , '5', '6', '7', '8', '9', '10', '11', '12'];
-    this.minutes = ['00', '15', '30', '45'];
-    this.dayTypes = ['AM', 'PM'];
-  }
+
+    populateData(){
+      this.hours = this.timedata.hours;
+      this.minutes = this.timedata.minutes;
+      this.dayTypes = this.timedata.dayTypes;
+    }
+
 
   getMeetingByID(meetingid){
      this.ms.getMeeting(meetingid).subscribe( data => {

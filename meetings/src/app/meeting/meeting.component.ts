@@ -5,6 +5,7 @@ import { from } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {MeetinglistComponent} from 'src/app/meetinglist/meetinglist.component';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { TimedataService } from '../_services/timedata.service';
 @Component({
   selector: 'app-meeting',
   templateUrl: './meeting.component.html',
@@ -21,7 +22,7 @@ selectedHour: string;
 selectedMinute: string;
 selectedDayType; string;
 jwt = new JwtHelperService();
-  constructor(private meetser: MeetingService, public authService: AuthService) { }
+  constructor(private meetser: MeetingService, public authService: AuthService, private timedata: TimedataService) { }
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -36,9 +37,10 @@ jwt = new JwtHelperService();
      error => {console.log('meeting insertion failed'); });
   }
 
-  populateData(){
-    this.hours = ['00', '1', '2', '3', '4' , '5', '6', '7', '8', '9', '10', '11', '12'];
-    this.minutes = ['00', '15', '30', '45'];
-    this.dayTypes = ['AM', 'PM']
+  populateData() {
+    console.log(this.timedata.hours);
+this.hours = this.timedata.hours;
+this.minutes = this.timedata.minutes;
+this.dayTypes = this.timedata.dayTypes;
   }
 }
